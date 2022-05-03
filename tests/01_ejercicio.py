@@ -1,4 +1,4 @@
-import time
+#import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -17,7 +17,7 @@ driver.maximize_window()
 # Abrir pagina
 driver.get(url)
 driver.maximize_window()
-time.sleep(3)
+driver.implicitly_wait(10)
 search: WebElement = driver.find_element(By.XPATH, '//header/div[1]/div[1]/div[2]/div[1]/input[1]')
 assert search.is_displayed(), "Input no es visible"
 
@@ -31,10 +31,13 @@ search_btn.click()
 
 image : WebElement = driver.find_element(By.XPATH, '//body[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/a[1]/img[1]')
 assert image.is_displayed(), "Imagen no es visible"
-time.sleep(2)
+driver.implicitly_wait(10)
 
 image.click()
-time.sleep(2)
+
+#time.sleep(2)
+
+#TODO - como buena practica sustituir los time.sleep por waits
 
 # Cerrar navegador
 driver.quit()
