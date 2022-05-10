@@ -8,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 # Setup
 chrome_driver_path = '../drivers/chromedriver'
 gecko_driver_path = '../drivers/geckodriver'
-url = 'https://demo.seleniumeasy.com/'
+url = 'https://demo.seleniumeasy.com/bootstrap-alert-messages-demo.html'
 service = Service(chrome_driver_path)
 driver = webdriver.Chrome(service=service)
 wait = WebDriverWait(driver, 10)
@@ -16,12 +16,16 @@ wait = WebDriverWait(driver, 10)
 # Open Web Page
 driver.get(url)
 
-locator = (By.ID, "at-cv-lightbox-close")
-#locator = (By.ID, "at-cv-lightbox-content")
-#locator = (By.LINK_TEXT, "No, thanks!'")
-search_popup = wait.until(EC.visibility_of_element_located(locator))
-assert search_popup.is_enabled(), "boton de cerrar del popup est habilitado"
+btn_locator = (By.ID, "autoclosable-btn-success")
+btn_msg: WebElement = wait.until(EC.element_to_be_clickable(btn_locator))
+#assert btn_asm.is_enabled(), "El boton no esta disponible"
+btn_msg.click()
 
-search_popup.click()
+alert_locator = (By.CLASS_NAME, "alert-autocloseable-success")
+
+wait.until(EC.visibility_of_element_located(alert_locator))
+
+assert wait.until(EC.invisibility_of_element_located(alert_locator)), "El elemento aun se ve"
 
 driver.quit()
+
