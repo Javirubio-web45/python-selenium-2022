@@ -3,13 +3,15 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from lib.factory.factory_driver import get_driver
 
+driver = get_driver("Firefox")
 # Inicializar driver
-chrome_driver_path = '../drivers/chromedriver'
-gecko_driver_path = 'drivers/geckodriver'
+#chrome_driver_path = '../drivers/chromedriver'
+#gecko_driver_path = 'drivers/geckodriver'
 url = 'https://laboratorio.qaminds.com/'
-service = Service(chrome_driver_path)
-driver = webdriver.Chrome(service=service)
+#service = Service(chrome_driver_path)
+#driver = webdriver.Chrome(service=service)
 driver.maximize_window()
 
 # TODO - Mejorar Xpaths
