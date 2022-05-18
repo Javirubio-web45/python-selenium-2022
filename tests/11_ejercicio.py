@@ -8,8 +8,9 @@ driver: WebDriver = None
 
 def setup():
     global driver
-    driver = get_driver("chrome")
-    driver.implicitly_wait(15)
+    driver = get_driver()
+
+
 
 
 def test_tablets():
