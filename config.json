@@ -4,7 +4,7 @@
   "path": "./drivers/geckodriver",
   "incognito": false,
   "headless": {
-    "enabled": true,
+    "enabled": false,
     "resolution": {
       "width": 800,
       "height": 600
